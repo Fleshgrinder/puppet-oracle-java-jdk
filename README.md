@@ -22,7 +22,7 @@ class { "oracle_java_jdk":
 ### Parameters
 
 * `version` set the JDK version to install, defaults to `7`
-* `release` set the Ubuntut release of the apt source, defaults to `trusty`
+* `release` set the Ubuntu release of the ppa/apt source, defaults to `trusty`
 
 ## Weblinks
 
