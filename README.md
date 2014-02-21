@@ -6,13 +6,13 @@ Oracle Java JDK installer (automatically downloads and installs Oracle JDK6 / JD
 
 If you want the latest version for your system simply include the module.
 
-```
+```puppet
 include oracle_java_jdk
 ```
 
 Of course you can easily change the version that you want to use.
 
-```
+```puppet
 class { "oracle_java_jdk":
     version => "8",
     release => "precise",
