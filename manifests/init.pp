@@ -24,7 +24,7 @@
 #
 class oracle_java_jdk (
   $version = "7",
-  $release = "precise"
+  $release = "trusty"
 ) {
 
   if !defined(Class["apt"]) {
@@ -32,8 +32,6 @@ class oracle_java_jdk (
   }
 
   $error = " not supported. Pull requests are very welcome."
-
-  # Validation
 
   case $::osfamily {
     "Debian": {}
@@ -48,43 +46,52 @@ class oracle_java_jdk (
       fail("${version}${error}")
     }
   }
-  
+
   case $release {
     "trusty", "saucy", "raring", "quantal", "precise", "oneiric", "lucid": {}
     default: {
       fail("${release}${error}")
     }
   }
-  
-  # Source
+
+  Package { ensure => "latest" }
+
+  file{ "preseed":
+    ensure => "file",
+    path   => "/tmp/puppet.oracle_java_jdk.preseed",
+    source => "puppet:///modules/oracle_java_jdk/java${version}.preseed",
+  }
 
   case $::lsbdistid {
     "debian": {
-      apt::source{ "oracle_java":
+      apt::source{ "oracle_java_jdk":
         location   => "http://ppa.launchpad.net/webupd8team/java/ubuntu",
         release    => "trusty",
         repos      => "main",
         key        => "EEA14886",
         key_server => "keyserver.ubuntu.com",
       }
+
+#      package { "oracle-java${version}-installer":
+#        responsefile => "preseed",
+#        require      => [ Apt::Source["oracle_java_jdk"], File["preseed"] ]
+#      }
     }
     "ubuntu": {
       apt::ppa{ "ppa:webupd8team/java": }
+
+      package { "oracle-java${version}-installer":
+        responsefile => "preseed",
+        require      => [ Apt::Ppa["ppa:webupd8team/java"], File["preseed"] ]
+      }
     }
     default: {
       fail("${::lsbdistid}${error}")
     }
   }
 
-  # Install
-
-  Package { ensure => "latest", provider => "apt" }
-
-  package { "oracle-java${version}-installer":
-    responsefile => "puppet:///modules/oracle_java_jdk_ppa/preseed",
-    require      => "puppet:///modules/oracle_java_jdk_ppa/preseed",
+  package { "oracle-java{$version}-set-default":
+    require => Package["oracle-java${version}-installer"]
   }
-
-  package { "oracle-java{$version}-set-default": }
 
 }

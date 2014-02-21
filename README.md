@@ -23,8 +23,6 @@ class { "oracle_java_jdk":
 
 * `version` set the JDK version to install, defaults to `7`
 * `release` set the Ubuntut release of the apt source, defaults to `trusty`
-'
-project_page 'https://github.com/Fleshgrinder/puppet-oracle-java-jdk
 
 ## Weblinks
 
