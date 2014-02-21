@@ -4,7 +4,9 @@ source 'https://github.com/Fleshgrinder/puppet-oracle-java-jdk.git'
 author 'Richard Fussenegger <richard@fussenegger.info>'
 license 'Public Domain'
 summary 'WebUpd8 Oracle Java (JDK) 6 / 7 / 8 Installer PPA module for Puppet.'
-description 'Oracle Java (JDK) Installer (automatically downloads and installs Oracle JDK6 / JDK7 / JDK8). There are no actual Java files in this repository.
+description '# Oracle Java JDK
+
+Oracle Java (JDK) Installer (automatically downloads and installs Oracle JDK6 / JDK7 / JDK8). There are no actual Java files in this repository.
 
 ## Usage
 

@@ -1,4 +1,6 @@
-Oracle Java (JDK) Installer (automatically downloads and installs Oracle JDK6 / JDK7 / JDK8). There are no actual Java files in this repository.
+# Oracle Java JDK
+
+Oracle Java JDK installer (automatically downloads and installs Oracle JDK6 / JDK7 / JDK8). There are no actual Java files in this repository.
 
 ## Usage
 

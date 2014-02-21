@@ -6,7 +6,8 @@
     "spec\\spec_helper.rb": "3ea886dd135e120afa31e0aab12e85b0",
     "tests\\init.pp": "1d6d058b5b80782974fcc30c6becd6aa",
     "spec\\spec.opts": "a600ded995d948e393fbe2320ba8e51c",
-    "Modulefile": "6ac561b4eeead5e69c45c4faa614cd1b",
+    "Modulefile": "dd302a85986670e9a05a67ad02784318",
+    ".travis.yml": "27e88ed14ce51c61da62efdbad612e8a",
     "README.md": "bbc4a14865c3a9eb09ec558ba95de262"
   },
   "dependencies": [
@@ -15,7 +16,7 @@
       "version_requirement": "1.x"
     }
   ],
-  "description": "Oracle Java (JDK) Installer (automatically downloads and installs Oracle JDK6 / JDK7 / JDK8). There are no actual Java files in this repository.\n\n## Usage\n\nIf you want the latest version for your system simply include the module.\n\n```\ninclude oracle_java_jdk\n```\n\nOf course you can easily change the version that you want to use.\n\n```\nclass { \"oracle_java_jdk\":\n    version \u003d\u003e \"8\",\n    release \u003d\u003e \"precise\",\n}\n```\n\n### Parameters\n\n* `version` set the JDK version to install, defaults to `7`\n* `release` set the Ubuntut release of the apt source, defaults to `trusty`\n\u0027\nproject_page \u0027https://github.com/Fleshgrinder/puppet-oracle-java-jdk\n\n## Weblinks\n\n* [WebUpd8 PPA](https://launchpad.net/~webupd8team/+archive/java)",
+  "description": "# Oracle Java JDK\n\nOracle Java (JDK) Installer (automatically downloads and installs Oracle JDK6 / JDK7 / JDK8). There are no actual Java files in this repository.\n\n## Usage\n\nIf you want the latest version for your system simply include the module.\n\n```\ninclude oracle_java_jdk\n```\n\nOf course you can easily change the version that you want to use.\n\n```\nclass { \"oracle_java_jdk\":\n    version \u003d\u003e \"8\",\n    release \u003d\u003e \"precise\",\n}\n```\n\n### Parameters\n\n* `version` set the JDK version to install, defaults to `7`\n* `release` set the Ubuntut release of the apt source, defaults to `trusty`\n\u0027\nproject_page \u0027https://github.com/Fleshgrinder/puppet-oracle-java-jdk\n\n## Weblinks\n\n* [WebUpd8 PPA](https://launchpad.net/~webupd8team/+archive/java)",
   "license": "Public Domain",
   "name": "Fleshgrinder-oracle_java_jdk",
   "project_page": "https://github.com/Fleshgrinder/puppet-oracle-java-jdk",
