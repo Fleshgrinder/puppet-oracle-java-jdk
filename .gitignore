@@ -3,3 +3,4 @@ pkg/
 Gemfile.lock
 spec/fixtures/manifests
 .project
+/nbproject/

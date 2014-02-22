@@ -1,9 +1,8 @@
 # Oracle Java JDK
-
-Oracle Java JDK installer (automatically downloads and installs Oracle JDK6 / JDK7 / JDK8). There are no actual Java files in this repository.
+Oracle Java JDK installer (automatically downloads and installs Oracle JDK6 / JDK7 / JDK8). There are no actual Java
+files in this repository.
 
 ## Usage
-
 If you want the latest version for your system simply include the module.
 
 ```puppet
@@ -20,10 +19,11 @@ class { "oracle_java_jdk":
 ```
 
 ### Parameters
-
 * `version` set the JDK version to install, defaults to `7`
 * `release` set the Ubuntu release of the ppa/apt source, defaults to `trusty`
 
-## Weblinks
+## License
+This is free and unencumbered software released into the public domain.
 
-* [WebUpd8 PPA](https://launchpad.net/~webupd8team/+archive/java)
+## Weblinks
+* [WebUpd8 Launchpad](https://launchpad.net/~webupd8team/+archive/java)

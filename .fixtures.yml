@@ -1,0 +1,5 @@
+fixtures:
+  repositories:
+    apt: "git://github.com/puppetlabs/puppetlabs-apt"
+  symlinks:
+    oracle_java_jdk: "#{source_dir}"
