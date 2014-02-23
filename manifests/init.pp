@@ -81,12 +81,25 @@ class oracle_java_jdk ($version = '7', $release = 'trusty') {
     }
   }
 
+  # DRY!
+  $preseed = '/tmp/oracle_java_jdk.dpkg.preseed.cfg'
+
+  # Copy the preseed file from the module's files directory.
+  file { $preseed:
+    backup => false,
+    ensure => 'present',
+    group  => 'root',
+    mode   => 440,
+    owner  => 'root',
+    source => "puppet:///modules/oracle_java_jdk${version}/preseed.cfg",
+  }
+
   # Make sure the Oracle Java JDK installer is available.
   package { 'oracle_java_jdk':
     ensure       => 'latest',
     name         => "oracle-java${version}-installer",
-    require      => [ $require, File['puppet:///modules/oracle_java_jdk/preseed.cfg'] ],
-    responsefile => 'puppet:///modules/oracle_java_jdk/preseed.cfg'
+    require      => [ $require, File[$preseed] ],
+    responsefile => $preseed,
   }
 
   # Make sure the desired Java JDK version is set as global default.
