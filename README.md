@@ -1,4 +1,5 @@
 # Oracle Java JDK
+[![Build Status](https://travis-ci.org/Fleshgrinder/puppet-oracle-java-jdk.png?branch=master)](https://travis-ci.org/Fleshgrinder/puppet-oracle-java-jdk)
 Oracle Java JDK installer (automatically downloads and installs Oracle JDK6 / JDK7 / JDK8). There are no actual Java
 files in this repository.
 

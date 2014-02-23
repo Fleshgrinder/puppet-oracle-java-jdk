@@ -60,11 +60,16 @@ class oracle_java_jdk ($version = '7', $release = 'trusty') {
     }
   }
 
-  # Make sure the correct preseed file is available.
-  file{ 'preseed':
-    ensure => 'file',
-    path   => '/tmp/puppet.oracle_java_jdk.preseed',
-    source => "puppet:///modules/oracle_java_jdk/java${version}.preseed",
+  # Mark Oracle's license agreement as seen for the Java JDK.
+  exec { 'set-license-seen':
+    command => 'echo debconf shared/accepted-oracle-license-v1-1 seend true | debconf-set-selections',
+    path    => '/usr/local/bin:/usr/bin:/bin:/usr/local/sbin:/usr/sbin:/sbin',
+  }
+
+  # Agree to the Oracle license agreement to install Java JDK.
+  exec { 'set-license-selected':
+    command => 'echo debconf shared/accepted-oracle-license-v1-1 select true | debconf-set-selections',
+    path    => '/usr/local/bin:/usr/bin:/bin:/usr/local/sbin:/usr/sbin:/sbin',
   }
 
   # Install package source depending on distro.
@@ -93,8 +98,7 @@ class oracle_java_jdk ($version = '7', $release = 'trusty') {
     ensure       => 'latest',
     name         => "oracle-java${version}-installer",
     provider     => 'apt',
-    responsefile => 'preseed',
-    require      => [ $require, File['preseed'] ],
+    require      => [ Exec['set-license-seen'], Exec['set-license-selected'], $require, File['preseed'] ],
   }
 
   # Make sure the desired Java JDK version is set as global default.
