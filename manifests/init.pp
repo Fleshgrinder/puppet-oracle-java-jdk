@@ -60,18 +60,6 @@ class oracle_java_jdk ($version = '7', $release = 'trusty') {
     }
   }
 
-  # Mark Oracle's license agreement as seen for the Java JDK.
-  exec { 'set-license-seen':
-    command => 'echo debconf shared/accepted-oracle-license-v1-1 seend true | debconf-set-selections',
-    path    => '/usr/local/bin:/usr/bin:/bin:/usr/local/sbin:/usr/sbin:/sbin',
-  }
-
-  # Agree to the Oracle license agreement to install Java JDK.
-  exec { 'set-license-selected':
-    command => 'echo debconf shared/accepted-oracle-license-v1-1 select true | debconf-set-selections',
-    path    => '/usr/local/bin:/usr/bin:/bin:/usr/local/sbin:/usr/sbin:/sbin',
-  }
-
   # Install package source depending on distro.
   case $::lsbdistid {
     'debian': {
@@ -97,16 +85,15 @@ class oracle_java_jdk ($version = '7', $release = 'trusty') {
   package { 'oracle_java_jdk':
     ensure       => 'latest',
     name         => "oracle-java${version}-installer",
-    provider     => 'apt',
-    require      => [ Exec['set-license-seen'], Exec['set-license-selected'], $require, File['preseed'] ],
+    require      => [ $require, File['puppet:///modules/oracle_java_jdk/preseed.cfg'] ],
+    responsefile => 'puppet:///modules/oracle_java_jdk/preseed.cfg'
   }
 
   # Make sure the desired Java JDK version is set as global default.
   package { 'oracle_java_jdk_installer':
-    ensure   => 'latest',
-    name     => "oracle-java${version}-set-default",
-    provider => 'apt',
-    require  => Package['oracle_java_jdk']
+    ensure  => 'latest',
+    name    => "oracle-java${version}-set-default",
+    require => Package['oracle_java_jdk']
   }
 
 }
