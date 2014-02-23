@@ -91,7 +91,7 @@ class oracle_java_jdk ($version = '7', $release = 'trusty') {
     group  => 'root',
     mode   => 440,
     owner  => 'root',
-    source => "puppet:///modules/oracle_java_jdk${version}/preseed.cfg",
+    source => "puppet:///modules/oracle_java_jdk/preseed${version}.cfg",
   }
 
   # Make sure the Oracle Java JDK installer is available.
