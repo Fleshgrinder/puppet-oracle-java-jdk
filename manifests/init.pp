@@ -86,10 +86,10 @@ class oracle_java_jdk ($version = '7', $release = 'trusty') {
 
   # Copy the preseed file from the module's files directory.
   file { $preseed:
-    backup => false,
     ensure => 'present',
+    backup => false,
     group  => 'root',
-    mode   => 440,
+    mode   => '0440',
     owner  => 'root',
     source => "puppet:///modules/oracle_java_jdk/preseed${version}.cfg",
   }
