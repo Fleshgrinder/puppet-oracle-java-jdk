@@ -96,7 +96,7 @@ class oracle_java_jdk ($version = '7', $release = 'trusty') {
 
   # Make sure the Oracle Java JDK installer is available.
   package { 'oracle_java_jdk':
-    ensure       => 'latest',
+    ensure       => 'present',
     name         => "oracle-java${version}-installer",
     require      => [ $require, File[$preseed] ],
     responsefile => $preseed,
@@ -104,7 +104,7 @@ class oracle_java_jdk ($version = '7', $release = 'trusty') {
 
   # Make sure the desired Java JDK version is set as global default.
   package { 'oracle_java_jdk_installer':
-    ensure  => 'latest',
+    ensure  => 'present',
     name    => "oracle-java${version}-set-default",
     require => Package['oracle_java_jdk']
   }
