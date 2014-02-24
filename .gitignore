@@ -1,6 +1,7 @@
 *.swp
-pkg/
-Gemfile.lock
-spec/fixtures/manifests
+.bundle/
+.gemfile.lock
 .project
-/nbproject/
+spec/fixtures/
+nbproject/
+pkg/
