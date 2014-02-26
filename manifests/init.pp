@@ -24,11 +24,6 @@
 #   }
 class oracle_java_jdk ($version = '7', $release = 'trusty') {
 
-  # Make sure that the apt module is available and included.
-  if !defined(Class['apt']) {
-    fail('Oracle Java JDK module requires the Puppetlabs apt module')
-  }
-
   # DRY!
   $error = ' not supported. Pull requests are very welcome.'
 
