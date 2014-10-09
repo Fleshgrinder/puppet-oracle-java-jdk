@@ -30,7 +30,9 @@ class { "oracle_java_jdk":
 * JDK 6 and 8 needs testing
 
 ## License
-This is free and unencumbered software released into the public domain.
+> This is free and unencumbered software released into the public domain.
+>
+> For more information, please refer to <http://unlicense.org>
 
 ## Weblinks
 * [WebUpd8 Launchpad](https://launchpad.net/~webupd8team/+archive/java)
