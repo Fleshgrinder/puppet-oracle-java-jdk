@@ -11,10 +11,7 @@
     "README.md": "bbc4a14865c3a9eb09ec558ba95de262"
   },
   "dependencies": [
-    {
-      "name": "apt",
-      "version_requirement": "1.x"
-    }
+    { "name": "puppetlabs/apt", "version_requirement": ">= 1.0.0" }
   ],
   "description": "# Oracle Java JDK\r\nOracle Java JDK installer (automatically downloads and installs Oracle JDK6 / JDK7 / JDK8). There are no actual Java\r\nfiles in this repository.\r\n\r\n## Usage\r\nIf you want the latest version for your system simply include the module.\r\n\r\n```puppet\r\ninclude oracle_java_jdk\r\n```\r\n\r\nOf course you can easily change the version that you want to use.\r\n\r\n```puppet\r\nclass { \"oracle_java_jdk\":\r\n    version => \"8\",\r\n    release => \"precise\",\r\n}\r\n```\r\n\r\n### Parameters\r\n* `version` set the JDK version to install, defaults to `7`\r\n* `release` set the Ubuntu release of the ppa/apt source, defaults to `trusty`\r\n\r\n## License\r\nThis is free and unencumbered software released into the public domain.\r\n\r\n## Weblinks\r\n* [WebUpd8 Launchpad](https://launchpad.net/~webupd8team/+archive/java)\r\n",
   "license": "Public Domain",
